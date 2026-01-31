@@ -29,4 +29,4 @@ jobs:
 
       # 4. 运行你的 Python 脚本
       - name: Run market strategy
-        run: python your_script.py
+        run: python vix-strategy.py
