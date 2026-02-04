@@ -2,6 +2,7 @@ import yfinance as yf
 import pandas as pd
 from datetime import datetime
 import requests
+import io
 
 def safe_extract_close(df, ticker):
     """安全提取 Close 列，兼容 MultiIndex"""
@@ -45,8 +46,8 @@ def get_latest_sp500_pe():
         response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
         
-        # 使用 pandas 读取表格
-        tables = pd.read_html(response.text)
+        # 使用 pandas 读取表格，包裹在 StringIO 中以避免 FutureWarning
+        tables = pd.read_html(io.StringIO(response.text))
         if not tables:
             return None
         
