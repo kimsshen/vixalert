@@ -133,7 +133,7 @@ def main():
             advice ="当前不满足任何预设条件，建议持有"
             print("当前不满足任何预设条件，建议持有")
             #不需要通知
-            return
+            #return
 
         send_wechat_notification(
             title="📈 交易信号提醒",
